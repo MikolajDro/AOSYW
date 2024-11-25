@@ -49,3 +49,39 @@ void test_analyze_data_should_returnError_whenLengthIsZero(void) {
    ), (UNITY_UINT)(20), UNITY_DISPLAY_STYLE_INT);
 
 }
+
+
+
+void test_analyze_data_should_returnLength_whenValidInput(void) {
+
+    uint8_t data[8] = {1, 2, 3, 4, 5, 6, 7, 8};
+
+    int result = analyze_data(data, 8);
+
+    UnityAssertEqualNumber((UNITY_INT)((8)), (UNITY_INT)((result)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(26), UNITY_DISPLAY_STYLE_INT);
+
+}
+
+
+
+void test_is_data_valid_should_returnError_whenDataIsNull(void) {
+
+    int result = is_data_valid(
+
+                              ((void *)0)
+
+                                  );
+
+    UnityAssertEqualNumber((UNITY_INT)((-1)), (UNITY_INT)((result)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(31), UNITY_DISPLAY_STYLE_INT);
+
+
+
+}
