@@ -3,6 +3,6 @@
 
 #include <stdint.h>
 
-int analyze_data(const uint8_t *data, size_t length);
+int analyze_data(const uint8_t *data, uint8_t length);
 
 #endif // ANALYZER_H
