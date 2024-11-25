@@ -3,7 +3,8 @@
     "stub_io.h": "c",
     "mock_stub_interrupt.h": "c",
     "main.h": "c",
-    "stub_iom328p.h": "c"
+    "stub_iom328p.h": "c",
+    "analyzer.h": "c"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
