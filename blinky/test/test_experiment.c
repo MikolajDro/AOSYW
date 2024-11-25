@@ -33,7 +33,19 @@ void test_analyze_data_should_returnLength_whenValidInput(void) {
 }
 
 
+void test_is_data_valid_should_returnError_whenDataIsNull(void) {
+    int result = is_data_valid(NULL, 64);
+    TEST_ASSERT_EQUAL(-1, result);
+}
+
+
 void test_is_data_valid_should_returnError_whenLengthIsInvalid(void) {
+    uint32_t data2[64] = {0};
+    int result = is_data_valid(data2, 65);
+    TEST_ASSERT_EQUAL(-2, result);
+}
+
+void test_is_data_valid_should_zero_whenEverythingIsValid(void) {
     uint32_t data2[64] = {0};
     int result = is_data_valid(data2, 64);
     TEST_ASSERT_EQUAL(0, result);

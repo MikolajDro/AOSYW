@@ -15,16 +15,24 @@
   :line: 29
   :message: ''
   :unity_test_time: 0
-- :test: test_is_data_valid_should_returnError_whenLengthIsInvalid
+- :test: test_is_data_valid_should_returnError_whenDataIsNull
   :line: 36
+  :message: ''
+  :unity_test_time: 0
+- :test: test_is_data_valid_should_returnError_whenLengthIsInvalid
+  :line: 42
+  :message: ''
+  :unity_test_time: 0
+- :test: test_is_data_valid_should_zero_whenEverythingIsValid
+  :line: 48
   :message: ''
   :unity_test_time: 0
 :failures: []
 :ignores: []
 :counts:
-  :total: 4
-  :passed: 4
+  :total: 6
+  :passed: 6
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.005862189999788825
+:time: 0.006253528000343067
