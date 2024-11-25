@@ -14,10 +14,13 @@
 		<Test id="4">
 			<Name>test/test_experiment.c::test_is_data_valid_should_returnError_whenDataIsNull</Name>
 		</Test>
+		<Test id="5">
+			<Name>test/test_experiment.c::test_is_data_valid_should_returnError_whenDataIsInvalid</Name>
+		</Test>
 	</SuccessfulTests>
 	<IgnoredTests/>
 	<Statistics>
-		<Tests>4</Tests>
+		<Tests>5</Tests>
 		<Ignores>0</Ignores>
 		<FailuresTotal>0</FailuresTotal>
 		<Errors>0</Errors>

@@ -31,3 +31,11 @@ void test_is_data_valid_should_returnError_whenDataIsNull(void) {
     TEST_ASSERT_EQUAL(-1, result);
 
 }
+
+void test_is_data_valid_should_returnError_whenDataIsInvalid(void) {
+    uint32_t data[64] = {0};
+    data[0] = 4001;
+    data[1] = 4000;
+    int result = is_data_valid(data);
+    TEST_ASSERT_EQUAL(-2, result);
+}

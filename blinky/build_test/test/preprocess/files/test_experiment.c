@@ -85,3 +85,23 @@ void test_is_data_valid_should_returnError_whenDataIsNull(void) {
 
 
 }
+
+
+
+void test_is_data_valid_should_returnError_whenDataIsInvalid(void) {
+
+    uint32_t data[64] = {0};
+
+    data[0] = 4001;
+
+    data[1] = 4000;
+
+    int result = is_data_valid(data);
+
+    UnityAssertEqualNumber((UNITY_INT)((-2)), (UNITY_INT)((result)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(40), UNITY_DISPLAY_STYLE_INT);
+
+}
