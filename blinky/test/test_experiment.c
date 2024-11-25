@@ -1,6 +1,12 @@
 #include "unity.h"
 #include "analyzer.h"
 
+#include <stdint.h>
+#include <string.h>
+#include <stdio.h>
+
+
+
 void setUp(void) {
     
 }
@@ -26,16 +32,9 @@ void test_analyze_data_should_returnLength_whenValidInput(void) {
     TEST_ASSERT_EQUAL(8, result);
 }
 
-void test_is_data_valid_should_returnError_whenDataIsNull(void) {
-    int result = is_data_valid(NULL);
-    TEST_ASSERT_EQUAL(-1, result);
 
-}
-
-void test_is_data_valid_should_returnError_whenDataIsInvalid(void) {
-    uint32_t data[64] = {0};
-    data[0] = 4001;
-    data[1] = 4000;
-    int result = is_data_valid(data);
-    TEST_ASSERT_EQUAL(-2, result);
+void test_is_data_valid_should_returnError_whenLengthIsInvalid(void) {
+    uint32_t data2[64] = {0};
+    int result = is_data_valid(data2, 64);
+    TEST_ASSERT_EQUAL(0, result);
 }

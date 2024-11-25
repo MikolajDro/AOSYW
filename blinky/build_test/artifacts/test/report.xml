@@ -12,15 +12,12 @@
 			<Name>test/test_experiment.c::test_analyze_data_should_returnLength_whenValidInput</Name>
 		</Test>
 		<Test id="4">
-			<Name>test/test_experiment.c::test_is_data_valid_should_returnError_whenDataIsNull</Name>
-		</Test>
-		<Test id="5">
-			<Name>test/test_experiment.c::test_is_data_valid_should_returnError_whenDataIsInvalid</Name>
+			<Name>test/test_experiment.c::test_is_data_valid_should_returnError_whenLengthIsInvalid</Name>
 		</Test>
 	</SuccessfulTests>
 	<IgnoredTests/>
 	<Statistics>
-		<Tests>5</Tests>
+		<Tests>4</Tests>
 		<Ignores>0</Ignores>
 		<FailuresTotal>0</FailuresTotal>
 		<Errors>0</Errors>

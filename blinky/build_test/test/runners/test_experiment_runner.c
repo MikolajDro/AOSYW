@@ -13,8 +13,7 @@ extern void tearDown(void);
 extern void test_analyze_data_should_returnError_whenDataIsNull(void);
 extern void test_analyze_data_should_returnError_whenLengthIsZero(void);
 extern void test_analyze_data_should_returnLength_whenValidInput(void);
-extern void test_is_data_valid_should_returnError_whenDataIsNull(void);
-extern void test_is_data_valid_should_returnError_whenDataIsInvalid(void);
+extern void test_is_data_valid_should_returnError_whenLengthIsInvalid(void);
 
 
 /*=======Mock Management=====*/
@@ -79,11 +78,10 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("test_experiment.c");
-  run_test(test_analyze_data_should_returnError_whenDataIsNull, "test_analyze_data_should_returnError_whenDataIsNull", 12);
-  run_test(test_analyze_data_should_returnError_whenLengthIsZero, "test_analyze_data_should_returnError_whenLengthIsZero", 17);
-  run_test(test_analyze_data_should_returnLength_whenValidInput, "test_analyze_data_should_returnLength_whenValidInput", 23);
-  run_test(test_is_data_valid_should_returnError_whenDataIsNull, "test_is_data_valid_should_returnError_whenDataIsNull", 29);
-  run_test(test_is_data_valid_should_returnError_whenDataIsInvalid, "test_is_data_valid_should_returnError_whenDataIsInvalid", 35);
+  run_test(test_analyze_data_should_returnError_whenDataIsNull, "test_analyze_data_should_returnError_whenDataIsNull", 18);
+  run_test(test_analyze_data_should_returnError_whenLengthIsZero, "test_analyze_data_should_returnError_whenLengthIsZero", 23);
+  run_test(test_analyze_data_should_returnLength_whenValidInput, "test_analyze_data_should_returnLength_whenValidInput", 29);
+  run_test(test_is_data_valid_should_returnError_whenLengthIsInvalid, "test_is_data_valid_should_returnError_whenLengthIsInvalid", 36);
 
   return UnityEnd();
 }

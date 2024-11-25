@@ -1,25 +1,34 @@
 #include "analyzer.h"
 
-#define NORMAL_DATA_SIZE 64
-#define MAX_SENSOR_RANGE 4000         // 4000 mm == 400 cm, max sensor range
-#define MIN_SENSOR_RANGE 0            // min sensor range
-
-int is_data_valid(const uint32_t *data, const uint8_t length)
+int is_data_valid(const uint32_t *data, const uint32_t length)
 {
-    if (!data || length != NORMAL_DATA_SIZE) {
-        // Seafety check for NULL pointer
+    uint32_t tmp[64] = {0}; // Temporary array to store data    
+
+    // Seafety check for NULL pointer
+    if (data == NULL) {
         return -1; // Wrong value
     }
+    
+    // Check if length is valid
+    if (!(length == MINIMUM_DATA_SIZE || length == NORMAL_DATA_SIZE)){
+       return -2; // Wrong length value
+    }
+
+    for (int i = 0; i < length; i++){
+        tmp[i] = data[i]; // Copy data to temporary array
+    }
+
+    // Check if data is in range otherwise set it to 0
     for(int i=0; i < length; i++) {
-        if (data[i] > MAX_SENSOR_RANGE || data[i] < MIN_SENSOR_RANGE) {
-            return -2; // Wrong value
+        if (tmp[i] > MAX_SENSOR_RANGE || tmp[i] < MIN_SENSOR_RANGE) {
+            tmp[i] = 0; // Set data to 0 if it is out of range
         }
     }
 
 
 
 
-    return 0; // Returns 0 if data is valid
+    return 0; // Returns valid data
 }
 
 int analyze_data(const uint8_t *data, uint8_t length) {
