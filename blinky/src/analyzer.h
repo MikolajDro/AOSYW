@@ -11,7 +11,7 @@
 #define MIN_SENSOR_RANGE 0            // min sensor range
 
 
-int is_data_valid(const uint32_t *data, const uint32_t length);
+int is_data_valid(uint32_t *data, const uint32_t length);
 int analyze_data(const uint8_t *data, uint8_t length);
 
 #endif // ANALYZER_H

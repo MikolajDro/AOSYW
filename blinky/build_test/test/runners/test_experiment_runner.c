@@ -15,7 +15,7 @@ extern void test_analyze_data_should_returnError_whenLengthIsZero(void);
 extern void test_analyze_data_should_returnLength_whenValidInput(void);
 extern void test_is_data_valid_should_returnError_whenDataIsNull(void);
 extern void test_is_data_valid_should_returnError_whenLengthIsInvalid(void);
-extern void test_is_data_valid_should_zero_whenEverythingIsValid(void);
+extern void test_is_data_valid_should_ConvertAllMinusOneToZero(void);
 
 
 /*=======Mock Management=====*/
@@ -85,7 +85,7 @@ int main(void)
   run_test(test_analyze_data_should_returnLength_whenValidInput, "test_analyze_data_should_returnLength_whenValidInput", 29);
   run_test(test_is_data_valid_should_returnError_whenDataIsNull, "test_is_data_valid_should_returnError_whenDataIsNull", 36);
   run_test(test_is_data_valid_should_returnError_whenLengthIsInvalid, "test_is_data_valid_should_returnError_whenLengthIsInvalid", 42);
-  run_test(test_is_data_valid_should_zero_whenEverythingIsValid, "test_is_data_valid_should_zero_whenEverythingIsValid", 48);
+  run_test(test_is_data_valid_should_ConvertAllMinusOneToZero, "test_is_data_valid_should_ConvertAllMinusOneToZero", 48);
 
   return UnityEnd();
 }

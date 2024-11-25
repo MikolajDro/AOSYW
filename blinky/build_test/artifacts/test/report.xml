@@ -18,7 +18,7 @@
 			<Name>test/test_experiment.c::test_is_data_valid_should_returnError_whenLengthIsInvalid</Name>
 		</Test>
 		<Test id="6">
-			<Name>test/test_experiment.c::test_is_data_valid_should_zero_whenEverythingIsValid</Name>
+			<Name>test/test_experiment.c::test_is_data_valid_should_ConvertAllMinusOneToZero</Name>
 		</Test>
 	</SuccessfulTests>
 	<IgnoredTests/>
