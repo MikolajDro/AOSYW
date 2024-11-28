@@ -45,3 +45,43 @@ void test_is_data_valid_should_returnError_whenLengthIsInvalid(void) {
     uint32_t *result = is_data_valid(data2, NORMAL_DATA_SIZE + 1);
     TEST_ASSERT_NULL(result);
 }
+
+void test_is_data_valid_should_ConvertAllMinusOneToZero(void) {
+    uint32_t data[NORMAL_DATA_SIZE];
+    uint32_t expected[NORMAL_DATA_SIZE];
+    
+    for (uint32_t i = 0; i < NORMAL_DATA_SIZE; i++) {
+        data[i] = (uint32_t)(-1);   // Filling data with value out of range
+        expected[i] = 0;            // Expected value
+    }
+
+    uint32_t *result = is_data_valid(data, NORMAL_DATA_SIZE);
+
+    TEST_ASSERT_NOT_NULL(result);
+    
+    // Tests if the result is equal to the expected value
+    TEST_ASSERT_EQUAL_UINT32_ARRAY(expected, result, NORMAL_DATA_SIZE);
+    
+    // Free the memory
+    free(result);
+}
+
+void test_is_data_valid_should_ReturnValidData_whenDataIsValid(void) {
+    uint32_t data[NORMAL_DATA_SIZE];
+    uint32_t expected[NORMAL_DATA_SIZE];
+    
+    for (uint32_t i = 0; i < NORMAL_DATA_SIZE; i++) {
+        data[i] = i;        // Filling data with valid values
+        expected[i] = i;    // Expected value
+    }
+
+    uint32_t *result = is_data_valid(data, NORMAL_DATA_SIZE);
+
+    TEST_ASSERT_NOT_NULL(result);
+    
+    // Sprawdzenie, czy wszystkie wartości są poprawne
+    TEST_ASSERT_EQUAL_UINT32_ARRAY(expected, result, NORMAL_DATA_SIZE);
+    
+    // Zwolnienie alokowanej pamięci
+    free(result);
+}
