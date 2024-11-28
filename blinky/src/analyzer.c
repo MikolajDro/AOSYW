@@ -1,42 +1,34 @@
 #include "analyzer.h"
 
+sensor_data_normal_size_t tmp;
 
-static uint32_t tmp[64]={0}; // Temporary array to store valid data
-
-uint32_t *is_data_valid(const uint32_t *data, const uint32_t length)
+sensor_data_normal_size_t *is_data_valid_normal_size(uint32_t *data, const length_t length)
 {
-    // Seafety check for NULL pointer
+    memset(&tmp, 0, sizeof(sensor_data_normal_size_t));
+
     if (data == NULL) {
-        return NULL; // Wrong value
+        tmp.data_status.is_data_present = 1;
+        return &tmp; // Returns sensor_data_normal_size_t with is_data_present flag set to 1 and previous data
     }
     
-    // Check if length is valid
-    if (!(length == MINIMUM_DATA_SIZE || length == NORMAL_DATA_SIZE)){
-       return NULL; // Wrong length value
+    if (length != NORMAL_DATA_SIZE) {
+       tmp.data_status.is_not_length_valid = 1;
     }
     else{
-        for (int i = 0; i < length; i++){
-            if (data[i] > MAX_SENSOR_RANGE || data[i] < MIN_SENSOR_RANGE){
-                tmp[i] = 0; // Set tmp to 0 if it is out of range
-            }
-            else{
-                tmp[i] = data[i];
-            }
-        }
-    }
-
-
-
-
-    return tmp; // Returns valid data
-}
-
-int analyze_data(const uint8_t *data, uint8_t length) {
-    if (!data || length == 0) {
-        return -1; // Wrong value
+        tmp.length = length;
     }
     
-    //TODO: Analyze data
 
-    return length; // Returns length
+    for (uint32_t i = 0; i < length; i++){
+        if (data[i] > MAX_SENSOR_RANGE){
+            tmp.data_status.invalid_data_counter++;
+        }
+        tmp.data[i] = data[i];
+    }
+
+    if(tmp.data_status.invalid_data_counter > MINIMUM_VAILD_DATA_NORMAL){
+        tmp.data_status.is_not_data_valid = 1;
+    }
+
+    return &tmp; // Returns sensor_data_normal_size_t
 }

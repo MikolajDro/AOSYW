@@ -10,13 +10,11 @@ char* GlobalOrderError;
 /*=======External Functions This Runner Calls=====*/
 extern void setUp(void);
 extern void tearDown(void);
-extern void test_analyze_data_should_returnError_whenDataIsNull(void);
-extern void test_analyze_data_should_returnError_whenLengthIsZero(void);
-extern void test_analyze_data_should_returnLength_whenValidInput(void);
-extern void test_is_data_valid_should_returnError_whenDataIsNull(void);
-extern void test_is_data_valid_should_returnError_whenLengthIsInvalid(void);
-extern void test_is_data_valid_should_ConvertAllMinusOneToZero(void);
-extern void test_is_data_valid_should_ReturnValidData_whenDataIsValid(void);
+extern void test_is_data_valid_normal_size_should_set_data_present_flag_when_data_is_null(void);
+extern void test_is_data_valid_normal_size_all_data_valid(void);
+extern void test_is_data_valid_normal_size_some_data_invalid_below_minimum(void);
+extern void test_is_data_valid_normal_size_invalid_data_counter_equal_minimum(void);
+extern void test_is_data_valid_normal_size_invalid_data_counter_above_minimum(void);
 
 
 /*=======Mock Management=====*/
@@ -81,13 +79,11 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("test_experiment.c");
-  run_test(test_analyze_data_should_returnError_whenDataIsNull, "test_analyze_data_should_returnError_whenDataIsNull", 19);
-  run_test(test_analyze_data_should_returnError_whenLengthIsZero, "test_analyze_data_should_returnError_whenLengthIsZero", 24);
-  run_test(test_analyze_data_should_returnLength_whenValidInput, "test_analyze_data_should_returnLength_whenValidInput", 30);
-  run_test(test_is_data_valid_should_returnError_whenDataIsNull, "test_is_data_valid_should_returnError_whenDataIsNull", 38);
-  run_test(test_is_data_valid_should_returnError_whenLengthIsInvalid, "test_is_data_valid_should_returnError_whenLengthIsInvalid", 44);
-  run_test(test_is_data_valid_should_ConvertAllMinusOneToZero, "test_is_data_valid_should_ConvertAllMinusOneToZero", 50);
-  run_test(test_is_data_valid_should_ReturnValidData_whenDataIsValid, "test_is_data_valid_should_ReturnValidData_whenDataIsValid", 67);
+  run_test(test_is_data_valid_normal_size_should_set_data_present_flag_when_data_is_null, "test_is_data_valid_normal_size_should_set_data_present_flag_when_data_is_null", 20);
+  run_test(test_is_data_valid_normal_size_all_data_valid, "test_is_data_valid_normal_size_all_data_valid", 27);
+  run_test(test_is_data_valid_normal_size_some_data_invalid_below_minimum, "test_is_data_valid_normal_size_some_data_invalid_below_minimum", 46);
+  run_test(test_is_data_valid_normal_size_invalid_data_counter_equal_minimum, "test_is_data_valid_normal_size_invalid_data_counter_equal_minimum", 72);
+  run_test(test_is_data_valid_normal_size_invalid_data_counter_above_minimum, "test_is_data_valid_normal_size_invalid_data_counter_above_minimum", 98);
 
   return UnityEnd();
 }

@@ -32,172 +32,316 @@ void tearDown(void) {
 
 
 
-void test_analyze_data_should_returnError_whenDataIsNull(void) {
 
-    int result = analyze_data(
 
-                             ((void *)0)
+void test_is_data_valid_normal_size_should_set_data_present_flag_when_data_is_null(void) {
 
-                                 , 10);
+    sensor_data_normal_size_t *result = is_data_valid_normal_size(
 
-    UnityAssertEqualNumber((UNITY_INT)((-1)), (UNITY_INT)((result)), (
+                                                                 ((void *)0)
 
-   ((void *)0)
-
-   ), (UNITY_UINT)(21), UNITY_DISPLAY_STYLE_INT);
-
-}
-
-
-
-void test_analyze_data_should_returnError_whenLengthIsZero(void) {
-
-    uint8_t data[1] = {0};
-
-    int result = analyze_data(data, 0);
-
-    UnityAssertEqualNumber((UNITY_INT)((-1)), (UNITY_INT)((result)), (
-
-   ((void *)0)
-
-   ), (UNITY_UINT)(27), UNITY_DISPLAY_STYLE_INT);
-
-}
-
-
-
-void test_analyze_data_should_returnLength_whenValidInput(void) {
-
-    uint8_t data[8] = {1, 2, 3, 4, 5, 6, 7, 8};
-
-    int result = analyze_data(data, 8);
-
-    UnityAssertEqualNumber((UNITY_INT)((8)), (UNITY_INT)((result)), (
-
-   ((void *)0)
-
-   ), (UNITY_UINT)(33), UNITY_DISPLAY_STYLE_INT);
-
-}
-
-
-
-
-
-
-
-void test_is_data_valid_should_returnError_whenDataIsNull(void) {
-
-    uint32_t *result = is_data_valid(
-
-                                    ((void *)0)
-
-                                        , 64);
-
-    do {if ((((result)) == 
-
-   ((void *)0)
-
-   )) {} else {UnityFail( (((" Expected NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(40))));}} while(0);
-
-}
-
-
-
-
-
-void test_is_data_valid_should_returnError_whenLengthIsInvalid(void) {
-
-    uint32_t data2[64] = {0};
-
-    uint32_t *result = is_data_valid(data2, 64 + 1);
-
-    do {if ((((result)) == 
-
-   ((void *)0)
-
-   )) {} else {UnityFail( (((" Expected NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(47))));}} while(0);
-
-}
-
-
-
-void test_is_data_valid_should_ConvertAllMinusOneToZero(void) {
-
-    uint32_t data[64];
-
-    uint32_t expected[64];
-
-
-
-    for (uint32_t i = 0; i < 64; i++) {
-
-        data[i] = (uint32_t)(-1);
-
-        expected[i] = 0;
-
-    }
-
-
-
-    uint32_t *result = is_data_valid(data, 64);
-
-
+                                                                     , 64);
 
     do {if ((((result)) != 
 
    ((void *)0)
 
-   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(61))));}} while(0);
+   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(22))));}} while(0);
 
-
-
-
-
-    UnityAssertEqualIntArray(( const void*)((expected)), ( const void*)((result)), (UNITY_UINT32)((64)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT8 )((1)), (UNITY_INT)(UNITY_UINT8 )((result->data_status.is_data_present)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(64), UNITY_DISPLAY_STYLE_UINT32, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(23), UNITY_DISPLAY_STYLE_UINT8);
 
 }
 
 
 
-void test_is_data_valid_should_ReturnValidData_whenDataIsValid(void) {
+
+
+void test_is_data_valid_normal_size_all_data_valid(void) {
 
     uint32_t data[64];
 
-    uint32_t expected[64];
+    for(int i = 0; i < 64; i++) {
 
-
-
-    for (uint32_t i = 0; i < 64; i++) {
-
-        data[i] = i;
-
-        expected[i] = i;
+        data[i] = 2000;
 
     }
 
 
 
-    uint32_t *result = is_data_valid(data, 64);
-
-
+    sensor_data_normal_size_t *result = is_data_valid_normal_size(data, 64);
 
     do {if ((((result)) != 
 
    ((void *)0)
 
-   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(78))));}} while(0);
+   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(34))));}} while(0);
 
-
-
-    UnityAssertEqualIntArray(( const void*)((expected)), ( const void*)((result)), (UNITY_UINT32)((64)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT8 )((0)), (UNITY_INT)(UNITY_UINT8 )((result->data_status.is_data_present)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(80), UNITY_DISPLAY_STYLE_UINT32, UNITY_ARRAY_TO_ARRAY);
+   ), (UNITY_UINT)(35), UNITY_DISPLAY_STYLE_UINT8);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT8 )((0)), (UNITY_INT)(UNITY_UINT8 )((result->data_status.is_not_length_valid)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(36), UNITY_DISPLAY_STYLE_UINT8);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT8 )((0)), (UNITY_INT)(UNITY_UINT8 )((result->data_status.invalid_data_counter)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(37), UNITY_DISPLAY_STYLE_UINT8);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT8 )((0)), (UNITY_INT)(UNITY_UINT8 )((result->data_status.is_not_data_valid)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(38), UNITY_DISPLAY_STYLE_UINT8);
+
+
+
+    for(int i = 0; i < 64; i++) {
+
+        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((2000)), (UNITY_INT)(UNITY_UINT32)((result->data[i])), (
+
+       ((void *)0)
+
+       ), (UNITY_UINT)(41), UNITY_DISPLAY_STYLE_UINT32);
+
+    }
+
+}
+
+
+
+
+
+void test_is_data_valid_normal_size_some_data_invalid_below_minimum(void) {
+
+    uint32_t data[64];
+
+    uint32_t expected_invalid = 16 / 4;
+
+
+
+    for(int i = 0; i < 64; i++) {
+
+        if(i < expected_invalid) {
+
+            data[i] = 5000;
+
+        }
+
+        else {
+
+            data[i] = 1000;
+
+        }
+
+    }
+
+
+
+    sensor_data_normal_size_t *result = is_data_valid_normal_size(data, 64);
+
+    do {if ((((result)) != 
+
+   ((void *)0)
+
+   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(60))));}} while(0);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_data_present)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(61), UNITY_DISPLAY_STYLE_UINT16);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_length_valid)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(62), UNITY_DISPLAY_STYLE_UINT16);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((expected_invalid)), (UNITY_INT)(UNITY_UINT16)((result->data_status.invalid_data_counter)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(63), UNITY_DISPLAY_STYLE_UINT16);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_data_valid)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(64), UNITY_DISPLAY_STYLE_UINT16);
+
+
+
+    for(int i = 0; i < 64; i++) {
+
+        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((data[i])), (UNITY_INT)(UNITY_UINT32)((result->data[i])), (
+
+       ((void *)0)
+
+       ), (UNITY_UINT)(67), UNITY_DISPLAY_STYLE_UINT32);
+
+    }
+
+}
+
+
+
+
+
+void test_is_data_valid_normal_size_invalid_data_counter_equal_minimum(void) {
+
+    uint32_t data[64];
+
+    uint32_t expected_invalid = 16;
+
+
+
+    for(int i = 0; i < 64; i++) {
+
+        if(i < expected_invalid) {
+
+            data[i] = 5000;
+
+        }
+
+        else {
+
+            data[i] = 1000;
+
+        }
+
+    }
+
+
+
+    sensor_data_normal_size_t *result = is_data_valid_normal_size(data, 64);
+
+    do {if ((((result)) != 
+
+   ((void *)0)
+
+   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(86))));}} while(0);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_data_present)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(87), UNITY_DISPLAY_STYLE_UINT16);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_length_valid)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(88), UNITY_DISPLAY_STYLE_UINT16);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((expected_invalid)), (UNITY_INT)(UNITY_UINT16)((result->data_status.invalid_data_counter)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(89), UNITY_DISPLAY_STYLE_UINT16);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_data_valid)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(90), UNITY_DISPLAY_STYLE_UINT16);
+
+
+
+    for(int i = 0; i < 64; i++) {
+
+        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((data[i])), (UNITY_INT)(UNITY_UINT32)((result->data[i])), (
+
+       ((void *)0)
+
+       ), (UNITY_UINT)(93), UNITY_DISPLAY_STYLE_UINT32);
+
+    }
+
+}
+
+
+
+
+
+void test_is_data_valid_normal_size_invalid_data_counter_above_minimum(void) {
+
+    uint32_t data[64];
+
+    uint32_t invalid_count = 16 / 4 + 1;
+
+
+
+    for(int i = 0; i < 64; i++) {
+
+        if(i < invalid_count) {
+
+            data[i] = 5000;
+
+        }
+
+        else {
+
+            data[i] = 1000;
+
+        }
+
+    }
+
+
+
+    sensor_data_normal_size_t *result = is_data_valid_normal_size(data, 64);
+
+    do {if ((((result)) != 
+
+   ((void *)0)
+
+   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(112))));}} while(0);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_data_present)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(113), UNITY_DISPLAY_STYLE_UINT16);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_length_valid)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(114), UNITY_DISPLAY_STYLE_UINT16);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((invalid_count)), (UNITY_INT)(UNITY_UINT16)((result->data_status.invalid_data_counter)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(115), UNITY_DISPLAY_STYLE_UINT16);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_data_valid)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(116), UNITY_DISPLAY_STYLE_UINT16);
+
+
+
+    for(int i = 0; i < 64; i++) {
+
+        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((data[i])), (UNITY_INT)(UNITY_UINT32)((result->data[i])), (
+
+       ((void *)0)
+
+       ), (UNITY_UINT)(119), UNITY_DISPLAY_STYLE_UINT32);
+
+    }
 
 }
