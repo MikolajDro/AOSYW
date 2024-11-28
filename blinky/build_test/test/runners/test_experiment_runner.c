@@ -14,6 +14,9 @@ extern void test_analyze_data_should_returnError_whenDataIsNull(void);
 extern void test_analyze_data_should_returnError_whenLengthIsZero(void);
 extern void test_analyze_data_should_returnLength_whenValidInput(void);
 extern void test_is_data_valid_should_returnError_whenDataIsNull(void);
+extern void test_is_data_valid_should_returnError_whenLengthIsInvalid(void);
+extern void test_is_data_valid_should_ConvertAllMinusOneToZero(void);
+extern void test_is_data_valid_should_ReturnValidData_whenDataIsValid(void);
 
 
 /*=======Mock Management=====*/
@@ -78,10 +81,13 @@ static void run_test(UnityTestFunction func, const char* name, UNITY_LINE_TYPE l
 int main(void)
 {
   UnityBegin("test_experiment.c");
-  run_test(test_analyze_data_should_returnError_whenDataIsNull, "test_analyze_data_should_returnError_whenDataIsNull", 18);
-  run_test(test_analyze_data_should_returnError_whenLengthIsZero, "test_analyze_data_should_returnError_whenLengthIsZero", 23);
-  run_test(test_analyze_data_should_returnLength_whenValidInput, "test_analyze_data_should_returnLength_whenValidInput", 29);
-  run_test(test_is_data_valid_should_returnError_whenDataIsNull, "test_is_data_valid_should_returnError_whenDataIsNull", 37);
+  run_test(test_analyze_data_should_returnError_whenDataIsNull, "test_analyze_data_should_returnError_whenDataIsNull", 19);
+  run_test(test_analyze_data_should_returnError_whenLengthIsZero, "test_analyze_data_should_returnError_whenLengthIsZero", 24);
+  run_test(test_analyze_data_should_returnLength_whenValidInput, "test_analyze_data_should_returnLength_whenValidInput", 30);
+  run_test(test_is_data_valid_should_returnError_whenDataIsNull, "test_is_data_valid_should_returnError_whenDataIsNull", 38);
+  run_test(test_is_data_valid_should_returnError_whenLengthIsInvalid, "test_is_data_valid_should_returnError_whenLengthIsInvalid", 44);
+  run_test(test_is_data_valid_should_ConvertAllMinusOneToZero, "test_is_data_valid_should_ConvertAllMinusOneToZero", 50);
+  run_test(test_is_data_valid_should_ReturnValidData_whenDataIsValid, "test_is_data_valid_should_ReturnValidData_whenDataIsValid", 67);
 
   return UnityEnd();
 }

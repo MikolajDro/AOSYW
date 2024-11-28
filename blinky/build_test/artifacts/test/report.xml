@@ -14,10 +14,19 @@
 		<Test id="4">
 			<Name>test/test_experiment.c::test_is_data_valid_should_returnError_whenDataIsNull</Name>
 		</Test>
+		<Test id="5">
+			<Name>test/test_experiment.c::test_is_data_valid_should_returnError_whenLengthIsInvalid</Name>
+		</Test>
+		<Test id="6">
+			<Name>test/test_experiment.c::test_is_data_valid_should_ConvertAllMinusOneToZero</Name>
+		</Test>
+		<Test id="7">
+			<Name>test/test_experiment.c::test_is_data_valid_should_ReturnValidData_whenDataIsValid</Name>
+		</Test>
 	</SuccessfulTests>
 	<IgnoredTests/>
 	<Statistics>
-		<Tests>4</Tests>
+		<Tests>7</Tests>
 		<Ignores>0</Ignores>
 		<FailuresTotal>0</FailuresTotal>
 		<Errors>0</Errors>

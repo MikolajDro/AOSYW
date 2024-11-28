@@ -1,8 +1,10 @@
 #include "analyzer.h"
 
-uint32_t *is_data_valid(const uint32_t const *data, const uint32_t length)
+
+static uint32_t tmp[64]={0}; // Temporary array to store valid data
+
+uint32_t *is_data_valid(const uint32_t *data, const uint32_t length)
 {
-    uint32_t* tmp[64]={0};
     // Seafety check for NULL pointer
     if (data == NULL) {
         return NULL; // Wrong value

@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 
 
@@ -61,9 +62,6 @@ void test_is_data_valid_should_ConvertAllMinusOneToZero(void) {
     
     // Tests if the result is equal to the expected value
     TEST_ASSERT_EQUAL_UINT32_ARRAY(expected, result, NORMAL_DATA_SIZE);
-    
-    // Free the memory
-    free(result);
 }
 
 void test_is_data_valid_should_ReturnValidData_whenDataIsValid(void) {
@@ -79,9 +77,5 @@ void test_is_data_valid_should_ReturnValidData_whenDataIsValid(void) {
 
     TEST_ASSERT_NOT_NULL(result);
     
-    // Sprawdzenie, czy wszystkie wartości są poprawne
     TEST_ASSERT_EQUAL_UINT32_ARRAY(expected, result, NORMAL_DATA_SIZE);
-    
-    // Zwolnienie alokowanej pamięci
-    free(result);
 }
