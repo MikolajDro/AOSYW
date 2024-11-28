@@ -38,3 +38,10 @@ void test_is_data_valid_should_returnError_whenDataIsNull(void) {
     uint32_t *result = is_data_valid(NULL, NORMAL_DATA_SIZE);
     TEST_ASSERT_NULL(result);
 }
+
+// Test for is_data_valid function 
+void test_is_data_valid_should_returnError_whenLengthIsInvalid(void) {
+    uint32_t data2[NORMAL_DATA_SIZE] = {0};
+    uint32_t *result = is_data_valid(data2, NORMAL_DATA_SIZE + 1);
+    TEST_ASSERT_NULL(result);
+}
