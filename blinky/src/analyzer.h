@@ -35,9 +35,11 @@ typedef struct {
 
 typedef enum
 {
-    CIRCULAR_BUFFER_INITILIZED_SUCCESSFULLY,
+    CB_OK,
     CIRCULAR_BUFFER_INITILIZED_UNSUCCESSFULLY,
     CIRCLE_BUFFER_NOT_INITIALIZE,
+    NO_NEW_DATA_FRAME,
+    INVALID_INDEX,
 
 } circular_buffer_err;
 typedef struct {
@@ -47,9 +49,11 @@ typedef struct {
 } circular_buffer_t;
 
 
-circular_buffer_err init_circular_buffer(circular_buffer_t *cb) ;
-
 
 sensor_data_normal_size_t *is_data_valid_normal_size(uint32_t *data, length_t length);
+
+circular_buffer_err init_circular_buffer(circular_buffer_t *cb) ;
+circular_buffer_err normal_data_circle_buffer(circular_buffer_t *cb, sensor_data_normal_size_t *new_data_frame);
+sensor_data_normal_size_t* get_data_from_buffer(circular_buffer_t *cb, uint32_t index);
 
 #endif // ANALYZER_H

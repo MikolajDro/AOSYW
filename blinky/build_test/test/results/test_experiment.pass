@@ -24,15 +24,19 @@
   :message: ''
   :unity_test_time: 0
 - :test: test_init_circular_buffer
-  :line: 127
+  :line: 124
+  :message: ''
+  :unity_test_time: 0
+- :test: test_normal_data_circle_buffer_add_single_frame
+  :line: 162
   :message: ''
   :unity_test_time: 0
 :failures: []
 :ignores: []
 :counts:
-  :total: 6
-  :passed: 6
+  :total: 7
+  :passed: 7
   :failed: 0
   :ignored: 0
 :stdout: []
-:time: 0.005505726000592404
+:time: 0.005577456000537495

@@ -20,10 +20,13 @@
 		<Test id="6">
 			<Name>test/test_experiment.c::test_init_circular_buffer</Name>
 		</Test>
+		<Test id="7">
+			<Name>test/test_experiment.c::test_normal_data_circle_buffer_add_single_frame</Name>
+		</Test>
 	</SuccessfulTests>
 	<IgnoredTests/>
 	<Statistics>
-		<Tests>6</Tests>
+		<Tests>7</Tests>
 		<Ignores>0</Ignores>
 		<FailuresTotal>0</FailuresTotal>
 		<Errors>0</Errors>

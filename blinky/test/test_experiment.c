@@ -110,7 +110,7 @@ void test_is_data_valid_normal_size_invalid_data_counter_above_minimum(void) {
     
     sensor_data_normal_size_t *result = is_data_valid_normal_size(data2, NORMAL_DATA_SIZE);
     TEST_ASSERT_NOT_NULL(result);
-    TEST_ASSERT_EQUAL_UINT32(0, result->data_status.is_data_present); // ? Act weird
+    TEST_ASSERT_EQUAL_UINT32(0, result->data_status.is_data_present); 
     TEST_ASSERT_EQUAL_UINT32(0, result->data_status.is_not_length_valid);
     TEST_ASSERT_EQUAL_UINT32(invalid_count, result->data_status.invalid_data_counter);
     TEST_ASSERT_EQUAL_UINT32(1, result->data_status.is_not_data_valid);
@@ -120,7 +120,7 @@ void test_is_data_valid_normal_size_invalid_data_counter_above_minimum(void) {
     }
 }
 
-
+// Test 6: Test if the function initializes the circular buffer correctly
 void test_init_circular_buffer(void) {
     circular_buffer_t cb;
     
@@ -141,3 +141,47 @@ void test_init_circular_buffer(void) {
         }
     }
 }
+
+// Helper function 1: Creates a data frame with NORMAL_DATA_SIZE data points
+sensor_data_normal_size_t create_data_frame(uint32_t base_value) {
+    sensor_data_normal_size_t frame;
+    frame.length = NORMAL_DATA_SIZE;
+    frame.data_status.is_data_present = 1;
+    frame.data_status.is_not_data_valid = 0;
+    frame.data_status.is_not_length_valid = 0;
+    frame.data_status.invalid_data_counter = 0;
+
+    for(int i = 0; i < NORMAL_DATA_SIZE; i++) {
+        frame.data[i] = base_value + i;
+    }
+
+    return frame;
+}
+
+// Test 7: Test if the function adds a single frame to the circular buffer
+void test_normal_data_circle_buffer_add_single_frame(void) {
+    circular_buffer_t cb;
+    init_circular_buffer(&cb);
+
+    sensor_data_normal_size_t frame = create_data_frame(1000);
+
+    circular_buffer_err err = normal_data_circle_buffer(&cb, &frame);
+    TEST_ASSERT_EQUAL_INT(CB_OK, err);
+
+    TEST_ASSERT_EQUAL_UINT32(1, cb.head);
+
+    TEST_ASSERT_EQUAL_UINT32(1, cb.count);
+
+    sensor_data_normal_size_t *retrieved_frame = get_data_from_buffer(&cb, 0);
+    TEST_ASSERT_NOT_NULL(retrieved_frame);
+    TEST_ASSERT_EQUAL_UINT32(frame.length, retrieved_frame->length);
+    TEST_ASSERT_EQUAL_UINT8(frame.data_status.is_data_present, retrieved_frame->data_status.is_data_present);
+    TEST_ASSERT_EQUAL_UINT8(frame.data_status.is_not_data_valid, retrieved_frame->data_status.is_not_data_valid);
+    TEST_ASSERT_EQUAL_UINT8(frame.data_status.is_not_length_valid, retrieved_frame->data_status.is_not_length_valid);
+    TEST_ASSERT_EQUAL_UINT32(frame.data_status.invalid_data_counter, retrieved_frame->data_status.invalid_data_counter);
+
+    for(int i = 0; i < NORMAL_DATA_SIZE; i++) {
+        TEST_ASSERT_EQUAL_UINT32(frame.data[i], retrieved_frame->data[i]);
+    }
+}
+
