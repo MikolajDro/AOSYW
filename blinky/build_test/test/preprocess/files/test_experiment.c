@@ -282,7 +282,7 @@ void test_is_data_valid_normal_size_invalid_data_counter_above_minimum(void) {
 
     uint32_t data2[64];
 
-    uint32_t invalid_count = 16 + 1;
+    uint32_t invalid_count = 16 + 32;
 
 
 
@@ -304,33 +304,33 @@ void test_is_data_valid_normal_size_invalid_data_counter_above_minimum(void) {
 
 
 
-    sensor_data_normal_size_t *result = is_data_valid_normal_size(data2, 64);
+    sensor_data_normal_size_t result = *is_data_valid_normal_size(data2, 64);
 
-    do {if ((((result)) != 
+    do {if ((((&result)) != 
 
    ((void *)0)
 
    )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(114))));}} while(0);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_data_present)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result.data_status.is_data_present)), (
 
    ((void *)0)
 
    ), (UNITY_UINT)(115), UNITY_DISPLAY_STYLE_UINT16);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_length_valid)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result.data_status.is_not_length_valid)), (
 
    ((void *)0)
 
    ), (UNITY_UINT)(116), UNITY_DISPLAY_STYLE_UINT16);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((invalid_count)), (UNITY_INT)(UNITY_UINT16)((result->data_status.invalid_data_counter)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((invalid_count)), (UNITY_INT)(UNITY_UINT16)((result.data_status.invalid_data_counter)), (
 
    ((void *)0)
 
    ), (UNITY_UINT)(117), UNITY_DISPLAY_STYLE_UINT16);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((1)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_data_valid)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((1)), (UNITY_INT)(UNITY_UINT16)((result.data_status.is_not_data_valid)), (
 
    ((void *)0)
 
@@ -340,7 +340,7 @@ void test_is_data_valid_normal_size_invalid_data_counter_above_minimum(void) {
 
     for(int i = 0; i < 64; i++) {
 
-        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((data2[i])), (UNITY_INT)(UNITY_UINT32)((result->data[i])), (
+        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((data2[i])), (UNITY_INT)(UNITY_UINT32)((result.data[i])), (
 
        ((void *)0)
 
