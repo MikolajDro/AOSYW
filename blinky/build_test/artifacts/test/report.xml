@@ -1,32 +1,54 @@
 <?xml version='1.0' encoding='utf-8' ?>
 <TestRun>
-	<FailedTests/>
-	<SuccessfulTests>
+	<FailedTests>
 		<Test id="1">
+			<Name>test/test_experiment.c::test_normal_data_circle_buffer_overflow</Name>
+			<FailureType>Assertion</FailureType>
+			<Location>
+				<File>test/test_experiment.c</File>
+				<Line>242</Line>
+			</Location>
+			<Message>Expected Non-NULL</Message>
+		</Test>
+	</FailedTests>
+	<SuccessfulTests>
+		<Test id="2">
 			<Name>test/test_experiment.c::test_is_data_valid_normal_size_should_set_data_present_flag_when_data_is_null</Name>
 		</Test>
-		<Test id="2">
+		<Test id="3">
 			<Name>test/test_experiment.c::test_is_data_valid_normal_size_all_data_valid</Name>
 		</Test>
-		<Test id="3">
+		<Test id="4">
 			<Name>test/test_experiment.c::test_is_data_valid_normal_size_some_data_invalid_below_minimum</Name>
 		</Test>
-		<Test id="4">
+		<Test id="5">
 			<Name>test/test_experiment.c::test_is_data_valid_normal_size_invalid_data_counter_equal_minimum</Name>
 		</Test>
-		<Test id="5">
+		<Test id="6">
 			<Name>test/test_experiment.c::test_is_data_valid_normal_size_invalid_data_counter_above_minimum</Name>
 		</Test>
-		<Test id="6">
+		<Test id="7">
 			<Name>test/test_experiment.c::test_init_circular_buffer</Name>
+		</Test>
+		<Test id="8">
+			<Name>test/test_experiment.c::test_normal_data_circle_buffer_add_single_frame</Name>
+		</Test>
+		<Test id="9">
+			<Name>test/test_experiment.c::test_normal_data_circle_buffer_add_multiple_frames</Name>
+		</Test>
+		<Test id="10">
+			<Name>test/test_experiment.c::test_get_data_from_buffer_valid_index</Name>
+		</Test>
+		<Test id="11">
+			<Name>test/test_experiment.c::test_get_data_from_buffer_invalid_index</Name>
 		</Test>
 	</SuccessfulTests>
 	<IgnoredTests/>
 	<Statistics>
-		<Tests>6</Tests>
+		<Tests>11</Tests>
 		<Ignores>0</Ignores>
-		<FailuresTotal>0</FailuresTotal>
+		<FailuresTotal>1</FailuresTotal>
 		<Errors>0</Errors>
-		<Failures>0</Failures>
+		<Failures>1</Failures>
 	</Statistics>
 </TestRun>
