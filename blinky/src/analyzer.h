@@ -20,12 +20,12 @@ typedef enum {
     //MINIMUM = MINIMUM_DATA_SIZE,
 } length_t;
 
-typedef union
+typedef struct
 {
-    uint16_t is_data_present:1;
-    uint16_t is_not_data_valid:1;
-    uint16_t is_not_length_valid:1;
-    uint16_t invalid_data_counter:13;
+    uint32_t is_data_present:1;
+    uint32_t is_not_data_valid:1;
+    uint32_t is_not_length_valid:1;
+    uint32_t invalid_data_counter:29;
 } data_status_normal_t;
 typedef struct {
     uint32_t data[NORMAL_DATA_SIZE];
@@ -42,14 +42,14 @@ typedef enum
 } circular_buffer_err;
 typedef struct {
     sensor_data_normal_size_t buffer[CIRCULAR_BUFFER_SIZE];
-    int head;   
-    int count;  
+    uint32_t head;   
+    uint32_t count;  
 } circular_buffer_t;
 
 
 circular_buffer_err init_circular_buffer(circular_buffer_t *cb) ;
 
 
-sensor_data_normal_size_t *is_data_valid_normal_size(uint32_t *data, const length_t const length);
+sensor_data_normal_size_t *is_data_valid_normal_size(uint32_t *data, length_t length);
 
 #endif // ANALYZER_H

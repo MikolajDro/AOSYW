@@ -1,9 +1,9 @@
 #include "analyzer.h"
 
-sensor_data_normal_size_t tmp;
-
-sensor_data_normal_size_t *is_data_valid_normal_size(uint32_t *data, const length_t length)
+sensor_data_normal_size_t *is_data_valid_normal_size(uint32_t *data, length_t length)
 {
+    static sensor_data_normal_size_t tmp;
+
     tmp.length = 0;
     tmp.data_status.is_data_present = 0;
     tmp.data_status.is_not_length_valid = 0;
@@ -19,12 +19,11 @@ sensor_data_normal_size_t *is_data_valid_normal_size(uint32_t *data, const lengt
     }
     
     if (length != NORMAL_DATA_SIZE) {
-       tmp.data_status.is_not_length_valid = 1;
-       return &tmp;
+        tmp.data_status.is_not_length_valid = 1;
+        return &tmp;
     }
     tmp.length = length;
     
-
     for (uint32_t i = 0; i < tmp.length; i++){
         if (data[i] > MAX_SENSOR_RANGE){
             tmp.data_status.invalid_data_counter++;
@@ -35,7 +34,6 @@ sensor_data_normal_size_t *is_data_valid_normal_size(uint32_t *data, const lengt
     if(tmp.data_status.invalid_data_counter > MINIMUM_VAILD_DATA_NORMAL){
         tmp.data_status.is_not_data_valid = 1;
     }
-
     return &tmp; // Returns sensor_data_normal_size_t
 }
 

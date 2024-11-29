@@ -48,11 +48,11 @@ void test_is_data_valid_normal_size_should_set_data_present_flag_when_data_is_nu
 
    )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(22))));}} while(0);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT8 )((1)), (UNITY_INT)(UNITY_UINT8 )((result->data_status.is_data_present)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((1)), (UNITY_INT)(UNITY_UINT32)((result->data_status.is_data_present)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(23), UNITY_DISPLAY_STYLE_UINT8);
+   ), (UNITY_UINT)(23), UNITY_DISPLAY_STYLE_UINT32);
 
 }
 
@@ -80,29 +80,29 @@ void test_is_data_valid_normal_size_all_data_valid(void) {
 
    )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(34))));}} while(0);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT8 )((0)), (UNITY_INT)(UNITY_UINT8 )((result->data_status.is_data_present)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((result->data_status.is_data_present)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(35), UNITY_DISPLAY_STYLE_UINT8);
+   ), (UNITY_UINT)(35), UNITY_DISPLAY_STYLE_UINT32);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT8 )((0)), (UNITY_INT)(UNITY_UINT8 )((result->data_status.is_not_length_valid)), (
-
-   ((void *)0)
-
-   ), (UNITY_UINT)(36), UNITY_DISPLAY_STYLE_UINT8);
-
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT8 )((0)), (UNITY_INT)(UNITY_UINT8 )((result->data_status.invalid_data_counter)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((result->data_status.is_not_length_valid)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(37), UNITY_DISPLAY_STYLE_UINT8);
+   ), (UNITY_UINT)(36), UNITY_DISPLAY_STYLE_UINT32);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT8 )((0)), (UNITY_INT)(UNITY_UINT8 )((result->data_status.is_not_data_valid)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((result->data_status.invalid_data_counter)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(38), UNITY_DISPLAY_STYLE_UINT8);
+   ), (UNITY_UINT)(37), UNITY_DISPLAY_STYLE_UINT32);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((result->data_status.is_not_data_valid)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(38), UNITY_DISPLAY_STYLE_UINT32);
 
 
 
@@ -156,29 +156,29 @@ void test_is_data_valid_normal_size_some_data_invalid_below_minimum(void) {
 
    )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(60))));}} while(0);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_data_present)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((result->data_status.is_data_present)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(61), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(61), UNITY_DISPLAY_STYLE_UINT32);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_length_valid)), (
-
-   ((void *)0)
-
-   ), (UNITY_UINT)(62), UNITY_DISPLAY_STYLE_UINT16);
-
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((expected_invalid)), (UNITY_INT)(UNITY_UINT16)((result->data_status.invalid_data_counter)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((result->data_status.is_not_length_valid)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(63), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(62), UNITY_DISPLAY_STYLE_UINT32);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_data_valid)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((expected_invalid)), (UNITY_INT)(UNITY_UINT32)((result->data_status.invalid_data_counter)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(64), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(63), UNITY_DISPLAY_STYLE_UINT32);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((result->data_status.is_not_data_valid)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(64), UNITY_DISPLAY_STYLE_UINT32);
 
 
 
@@ -232,29 +232,29 @@ void test_is_data_valid_normal_size_invalid_data_counter_equal_minimum(void) {
 
    )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(86))));}} while(0);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_data_present)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((result->data_status.is_data_present)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(87), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(87), UNITY_DISPLAY_STYLE_UINT32);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_length_valid)), (
-
-   ((void *)0)
-
-   ), (UNITY_UINT)(88), UNITY_DISPLAY_STYLE_UINT16);
-
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((expected_invalid)), (UNITY_INT)(UNITY_UINT16)((result->data_status.invalid_data_counter)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((result->data_status.is_not_length_valid)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(89), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(88), UNITY_DISPLAY_STYLE_UINT32);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_data_valid)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((expected_invalid)), (UNITY_INT)(UNITY_UINT32)((result->data_status.invalid_data_counter)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(90), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(89), UNITY_DISPLAY_STYLE_UINT32);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((result->data_status.is_not_data_valid)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(90), UNITY_DISPLAY_STYLE_UINT32);
 
 
 
@@ -275,6 +275,12 @@ void test_is_data_valid_normal_size_invalid_data_counter_equal_minimum(void) {
 
 
 void test_is_data_valid_normal_size_invalid_data_counter_above_minimum(void) {
+
+
+
+
+
+
 
     uint32_t data2[64];
 
@@ -306,31 +312,31 @@ void test_is_data_valid_normal_size_invalid_data_counter_above_minimum(void) {
 
    ((void *)0)
 
-   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(112))));}} while(0);
+   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(115))));}} while(0);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_data_present)), (
-
-   ((void *)0)
-
-   ), (UNITY_UINT)(113), UNITY_DISPLAY_STYLE_UINT16);
-
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_length_valid)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((result->data_status.is_data_present)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(114), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(116), UNITY_DISPLAY_STYLE_UINT32);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((invalid_count)), (UNITY_INT)(UNITY_UINT16)((result->data_status.invalid_data_counter)), (
-
-   ((void *)0)
-
-   ), (UNITY_UINT)(115), UNITY_DISPLAY_STYLE_UINT16);
-
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((1)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_data_valid)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((result->data_status.is_not_length_valid)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(116), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(117), UNITY_DISPLAY_STYLE_UINT32);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((invalid_count)), (UNITY_INT)(UNITY_UINT32)((result->data_status.invalid_data_counter)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(118), UNITY_DISPLAY_STYLE_UINT32);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((1)), (UNITY_INT)(UNITY_UINT32)((result->data_status.is_not_data_valid)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(119), UNITY_DISPLAY_STYLE_UINT32);
 
 
 
@@ -340,7 +346,7 @@ void test_is_data_valid_normal_size_invalid_data_counter_above_minimum(void) {
 
        ((void *)0)
 
-       ), (UNITY_UINT)(119), UNITY_DISPLAY_STYLE_UINT32);
+       ), (UNITY_UINT)(122), UNITY_DISPLAY_STYLE_UINT32);
 
     }
 
@@ -364,7 +370,7 @@ void test_init_circular_buffer(void) {
 
    ((void *)0)
 
-   ), (UNITY_UINT)(129), UNITY_DISPLAY_STYLE_INT);
+   ), (UNITY_UINT)(132), UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -372,7 +378,7 @@ void test_init_circular_buffer(void) {
 
    ((void *)0)
 
-   ), (UNITY_UINT)(131), UNITY_DISPLAY_STYLE_INT);
+   ), (UNITY_UINT)(134), UNITY_DISPLAY_STYLE_INT);
 
 
 
@@ -382,31 +388,31 @@ void test_init_circular_buffer(void) {
 
        ((void *)0)
 
-       ), (UNITY_UINT)(134), UNITY_DISPLAY_STYLE_UINT32);
+       ), (UNITY_UINT)(137), UNITY_DISPLAY_STYLE_UINT32);
 
-        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT8 )((0)), (UNITY_INT)(UNITY_UINT8 )((cb.buffer[i].data_status.is_data_present)), (
-
-       ((void *)0)
-
-       ), (UNITY_UINT)(135), UNITY_DISPLAY_STYLE_UINT8);
-
-        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT8 )((0)), (UNITY_INT)(UNITY_UINT8 )((cb.buffer[i].data_status.is_not_length_valid)), (
+        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((cb.buffer[i].data_status.is_data_present)), (
 
        ((void *)0)
 
-       ), (UNITY_UINT)(136), UNITY_DISPLAY_STYLE_UINT8);
+       ), (UNITY_UINT)(138), UNITY_DISPLAY_STYLE_UINT32);
 
-        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT8 )((0)), (UNITY_INT)(UNITY_UINT8 )((cb.buffer[i].data_status.invalid_data_counter)), (
-
-       ((void *)0)
-
-       ), (UNITY_UINT)(137), UNITY_DISPLAY_STYLE_UINT8);
-
-        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT8 )((0)), (UNITY_INT)(UNITY_UINT8 )((cb.buffer[i].data_status.is_not_data_valid)), (
+        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((cb.buffer[i].data_status.is_not_length_valid)), (
 
        ((void *)0)
 
-       ), (UNITY_UINT)(138), UNITY_DISPLAY_STYLE_UINT8);
+       ), (UNITY_UINT)(139), UNITY_DISPLAY_STYLE_UINT32);
+
+        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((cb.buffer[i].data_status.invalid_data_counter)), (
+
+       ((void *)0)
+
+       ), (UNITY_UINT)(140), UNITY_DISPLAY_STYLE_UINT32);
+
+        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((cb.buffer[i].data_status.is_not_data_valid)), (
+
+       ((void *)0)
+
+       ), (UNITY_UINT)(141), UNITY_DISPLAY_STYLE_UINT32);
 
         for(int j = 0; j < 64; j++) {
 
@@ -414,7 +420,7 @@ void test_init_circular_buffer(void) {
 
            ((void *)0)
 
-           ), (UNITY_UINT)(140), UNITY_DISPLAY_STYLE_UINT32);
+           ), (UNITY_UINT)(143), UNITY_DISPLAY_STYLE_UINT32);
 
         }
 
