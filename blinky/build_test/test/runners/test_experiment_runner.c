@@ -15,6 +15,7 @@ extern void test_is_data_valid_normal_size_all_data_valid(void);
 extern void test_is_data_valid_normal_size_some_data_invalid_below_minimum(void);
 extern void test_is_data_valid_normal_size_invalid_data_counter_equal_minimum(void);
 extern void test_is_data_valid_normal_size_invalid_data_counter_above_minimum(void);
+extern void test_init_circular_buffer(void);
 
 
 /*=======Mock Management=====*/
@@ -84,6 +85,7 @@ int main(void)
   run_test(test_is_data_valid_normal_size_some_data_invalid_below_minimum, "test_is_data_valid_normal_size_some_data_invalid_below_minimum", 46);
   run_test(test_is_data_valid_normal_size_invalid_data_counter_equal_minimum, "test_is_data_valid_normal_size_invalid_data_counter_equal_minimum", 72);
   run_test(test_is_data_valid_normal_size_invalid_data_counter_above_minimum, "test_is_data_valid_normal_size_invalid_data_counter_above_minimum", 98);
+  run_test(test_init_circular_buffer, "test_init_circular_buffer", 124);
 
   return UnityEnd();
 }

@@ -19,16 +19,20 @@
   :line: 72
   :message: ''
   :unity_test_time: 0
-- :test: test_is_data_valid_normal_size_invalid_data_counter_above_minimum
-  :line: 98
+- :test: test_init_circular_buffer
+  :line: 124
   :message: ''
   :unity_test_time: 0
-:failures: []
+:failures:
+- :test: test_is_data_valid_normal_size_invalid_data_counter_above_minimum
+  :line: 113
+  :message: Expected 0 Was 1
+  :unity_test_time: 0
 :ignores: []
 :counts:
-  :total: 5
+  :total: 6
   :passed: 5
-  :failed: 0
+  :failed: 1
   :ignored: 0
 :stdout: []
-:time: 0.005431416999272187
+:time: 0.005930052000167052
