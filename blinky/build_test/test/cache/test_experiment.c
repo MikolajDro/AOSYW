@@ -640,13 +640,13 @@ void test_normal_data_circle_buffer_overflow(void) {
 
 
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((cb.head)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((100)), (UNITY_INT)(UNITY_UINT32)((cb.head)), (
 
    ((void *)0)
 
    ), (UNITY_UINT)(221), UNITY_DISPLAY_STYLE_UINT32);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((cb.count)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((100)), (UNITY_INT)(UNITY_UINT32)((cb.count)), (
 
    ((void *)0)
 
@@ -654,7 +654,7 @@ void test_normal_data_circle_buffer_overflow(void) {
 
 
 
-    for(uint32_t i = 0; i < 10; i++) {
+    for(uint32_t i = 100; i < 100 + 10; i++) {
 
         sensor_data_normal_size_t frame = create_data_frame(3000 + (i * 100));
 
@@ -670,7 +670,7 @@ void test_normal_data_circle_buffer_overflow(void) {
 
 
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((10)), (UNITY_INT)(UNITY_UINT32)((cb.head)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((100 + 10)), (UNITY_INT)(UNITY_UINT32)((cb.head)), (
 
    ((void *)0)
 
@@ -678,7 +678,7 @@ void test_normal_data_circle_buffer_overflow(void) {
 
 
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((10)), (UNITY_INT)(UNITY_UINT32)((cb.count)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((100)), (UNITY_INT)(UNITY_UINT32)((cb.count)), (
 
    ((void *)0)
 

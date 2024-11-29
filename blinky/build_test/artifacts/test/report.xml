@@ -6,9 +6,9 @@
 			<FailureType>Assertion</FailureType>
 			<Location>
 				<File>test/test_experiment.c</File>
-				<Line>242</Line>
+				<Line>221</Line>
 			</Location>
-			<Message>Expected Non-NULL</Message>
+			<Message>Expected 100 Was 0</Message>
 		</Test>
 	</FailedTests>
 	<SuccessfulTests>

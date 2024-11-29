@@ -45,8 +45,8 @@
   :unity_test_time: 0
 :failures:
 - :test: test_normal_data_circle_buffer_overflow
-  :line: 242
-  :message: Expected Non-NULL
+  :line: 221
+  :message: Expected 100 Was 0
   :unity_test_time: 0
 :ignores: []
 :counts:
@@ -55,4 +55,4 @@
   :failed: 1
   :ignored: 0
 :stdout: []
-:time: 0.006255756001337431
+:time: 0.006105125999965821
