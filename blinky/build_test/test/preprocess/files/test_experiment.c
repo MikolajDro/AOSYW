@@ -126,9 +126,7 @@ void test_is_data_valid_normal_size_some_data_invalid_below_minimum(void) {
 
     uint32_t data[64];
 
-    uint32_t expected_invalid = 16 / 4;
-
-
+    uint32_t expected_invalid = 16;
 
     for(int i = 0; i < 64; i++) {
 
@@ -154,31 +152,31 @@ void test_is_data_valid_normal_size_some_data_invalid_below_minimum(void) {
 
    ((void *)0)
 
-   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(60))));}} while(0);
+   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(59))));}} while(0);
 
     UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_data_present)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(61), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(60), UNITY_DISPLAY_STYLE_UINT16);
 
     UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_length_valid)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(62), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(61), UNITY_DISPLAY_STYLE_UINT16);
 
     UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((expected_invalid)), (UNITY_INT)(UNITY_UINT16)((result->data_status.invalid_data_counter)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(63), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(62), UNITY_DISPLAY_STYLE_UINT16);
 
     UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_data_valid)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(64), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(63), UNITY_DISPLAY_STYLE_UINT16);
 
 
 
@@ -188,7 +186,7 @@ void test_is_data_valid_normal_size_some_data_invalid_below_minimum(void) {
 
        ((void *)0)
 
-       ), (UNITY_UINT)(67), UNITY_DISPLAY_STYLE_UINT32);
+       ), (UNITY_UINT)(66), UNITY_DISPLAY_STYLE_UINT32);
 
     }
 
@@ -230,31 +228,31 @@ void test_is_data_valid_normal_size_invalid_data_counter_equal_minimum(void) {
 
    ((void *)0)
 
-   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(86))));}} while(0);
+   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(85))));}} while(0);
 
     UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_data_present)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(87), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(86), UNITY_DISPLAY_STYLE_UINT16);
 
     UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_length_valid)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(88), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(87), UNITY_DISPLAY_STYLE_UINT16);
 
     UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((expected_invalid)), (UNITY_INT)(UNITY_UINT16)((result->data_status.invalid_data_counter)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(89), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(88), UNITY_DISPLAY_STYLE_UINT16);
 
     UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_data_valid)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(90), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(89), UNITY_DISPLAY_STYLE_UINT16);
 
 
 
@@ -264,7 +262,7 @@ void test_is_data_valid_normal_size_invalid_data_counter_equal_minimum(void) {
 
        ((void *)0)
 
-       ), (UNITY_UINT)(93), UNITY_DISPLAY_STYLE_UINT32);
+       ), (UNITY_UINT)(92), UNITY_DISPLAY_STYLE_UINT32);
 
     }
 
@@ -276,9 +274,15 @@ void test_is_data_valid_normal_size_invalid_data_counter_equal_minimum(void) {
 
 void test_is_data_valid_normal_size_invalid_data_counter_above_minimum(void) {
 
-    uint32_t data[64];
 
-    uint32_t invalid_count = 16 / 4 + 1;
+
+
+
+
+
+    uint32_t data2[64];
+
+    uint32_t invalid_count = 16 + 1;
 
 
 
@@ -286,13 +290,13 @@ void test_is_data_valid_normal_size_invalid_data_counter_above_minimum(void) {
 
         if(i < invalid_count) {
 
-            data[i] = 5000;
+            data2[i] = 5000;
 
         }
 
         else {
 
-            data[i] = 1000;
+            data2[i] = 1000;
 
         }
 
@@ -300,47 +304,47 @@ void test_is_data_valid_normal_size_invalid_data_counter_above_minimum(void) {
 
 
 
-    sensor_data_normal_size_t *result = is_data_valid_normal_size(data, 64);
+    sensor_data_normal_size_t *result = is_data_valid_normal_size(data2, 64);
 
     do {if ((((result)) != 
 
    ((void *)0)
 
-   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(112))));}} while(0);
+   )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(114))));}} while(0);
 
     UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_data_present)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(113), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(115), UNITY_DISPLAY_STYLE_UINT16);
 
     UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_length_valid)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(114), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(116), UNITY_DISPLAY_STYLE_UINT16);
 
     UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((invalid_count)), (UNITY_INT)(UNITY_UINT16)((result->data_status.invalid_data_counter)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(115), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(117), UNITY_DISPLAY_STYLE_UINT16);
 
-    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((0)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_data_valid)), (
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT16)((1)), (UNITY_INT)(UNITY_UINT16)((result->data_status.is_not_data_valid)), (
 
    ((void *)0)
 
-   ), (UNITY_UINT)(116), UNITY_DISPLAY_STYLE_UINT16);
+   ), (UNITY_UINT)(118), UNITY_DISPLAY_STYLE_UINT16);
 
 
 
     for(int i = 0; i < 64; i++) {
 
-        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((data[i])), (UNITY_INT)(UNITY_UINT32)((result->data[i])), (
+        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((data2[i])), (UNITY_INT)(UNITY_UINT32)((result->data[i])), (
 
        ((void *)0)
 
-       ), (UNITY_UINT)(119), UNITY_DISPLAY_STYLE_UINT32);
+       ), (UNITY_UINT)(121), UNITY_DISPLAY_STYLE_UINT32);
 
     }
 
