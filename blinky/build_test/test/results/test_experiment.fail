@@ -31,12 +31,28 @@
   :line: 162
   :message: ''
   :unity_test_time: 0
-:failures: []
+- :test: test_normal_data_circle_buffer_add_multiple_frames
+  :line: 189
+  :message: ''
+  :unity_test_time: 0
+- :test: test_get_data_from_buffer_valid_index
+  :line: 248
+  :message: ''
+  :unity_test_time: 0
+- :test: test_get_data_from_buffer_invalid_index
+  :line: 266
+  :message: ''
+  :unity_test_time: 0
+:failures:
+- :test: test_normal_data_circle_buffer_overflow
+  :line: 242
+  :message: Expected Non-NULL
+  :unity_test_time: 0
 :ignores: []
 :counts:
-  :total: 7
-  :passed: 7
-  :failed: 0
+  :total: 11
+  :passed: 10
+  :failed: 1
   :ignored: 0
 :stdout: []
-:time: 0.005577456000537495
+:time: 0.006255756001337431

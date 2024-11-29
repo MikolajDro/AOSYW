@@ -80,10 +80,10 @@ circular_buffer_err normal_data_circle_buffer(circular_buffer_t *cb, sensor_data
         cb->buffer[index].data[j] = new_data_frame->data[j];
     }
 
-    cb->head++;
+    cb->head = (cb->head + 1) % CIRCULAR_BUFFER_SIZE;
 
     if (cb->count < CIRCULAR_BUFFER_SIZE) {
-        cb->count++;
+        cb->count = (cb->count + 1) % CIRCULAR_BUFFER_SIZE;
     }
 
     return CB_OK;
@@ -94,8 +94,7 @@ sensor_data_normal_size_t* get_data_from_buffer(circular_buffer_t *cb, uint32_t 
         return NULL;
     }
 
-    uint32_t actual_index = (cb->head - cb->count + index) % CIRCULAR_BUFFER_SIZE;
-    if (actual_index < 0) actual_index += CIRCULAR_BUFFER_SIZE;
+    uint32_t actual_index = cb->head - cb->count + index;
 
     return (sensor_data_normal_size_t*)&cb->buffer[actual_index];
 }

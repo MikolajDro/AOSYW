@@ -17,6 +17,10 @@ extern void test_is_data_valid_normal_size_invalid_data_counter_equal_minimum(vo
 extern void test_is_data_valid_normal_size_invalid_data_counter_above_minimum(void);
 extern void test_init_circular_buffer(void);
 extern void test_normal_data_circle_buffer_add_single_frame(void);
+extern void test_normal_data_circle_buffer_add_multiple_frames(void);
+extern void test_normal_data_circle_buffer_overflow(void);
+extern void test_get_data_from_buffer_valid_index(void);
+extern void test_get_data_from_buffer_invalid_index(void);
 
 
 /*=======Mock Management=====*/
@@ -88,6 +92,10 @@ int main(void)
   run_test(test_is_data_valid_normal_size_invalid_data_counter_above_minimum, "test_is_data_valid_normal_size_invalid_data_counter_above_minimum", 98);
   run_test(test_init_circular_buffer, "test_init_circular_buffer", 124);
   run_test(test_normal_data_circle_buffer_add_single_frame, "test_normal_data_circle_buffer_add_single_frame", 162);
+  run_test(test_normal_data_circle_buffer_add_multiple_frames, "test_normal_data_circle_buffer_add_multiple_frames", 189);
+  run_test(test_normal_data_circle_buffer_overflow, "test_normal_data_circle_buffer_overflow", 211);
+  run_test(test_get_data_from_buffer_valid_index, "test_get_data_from_buffer_valid_index", 248);
+  run_test(test_get_data_from_buffer_invalid_index, "test_get_data_from_buffer_invalid_index", 266);
 
   return UnityEnd();
 }

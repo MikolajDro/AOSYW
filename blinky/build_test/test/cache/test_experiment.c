@@ -547,3 +547,267 @@ void test_normal_data_circle_buffer_add_single_frame(void) {
     }
 
 }
+
+
+
+
+
+void test_normal_data_circle_buffer_add_multiple_frames(void) {
+
+    circular_buffer_t cb;
+
+    init_circular_buffer(&cb);
+
+
+
+    for(uint32_t i = 0; i < 50; i++) {
+
+        sensor_data_normal_size_t frame = create_data_frame(1000 + i * 100);
+
+        circular_buffer_err err = normal_data_circle_buffer(&cb, &frame);
+
+        UnityAssertEqualNumber((UNITY_INT)((CB_OK)), (UNITY_INT)((err)), (
+
+       ((void *)0)
+
+       ), (UNITY_UINT)(196), UNITY_DISPLAY_STYLE_INT);
+
+    }
+
+
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((50)), (UNITY_INT)(UNITY_UINT32)((cb.head)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(199), UNITY_DISPLAY_STYLE_UINT32);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((50)), (UNITY_INT)(UNITY_UINT32)((cb.count)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(200), UNITY_DISPLAY_STYLE_UINT32);
+
+
+
+    for(uint32_t i = 0; i < 50; i++) {
+
+        sensor_data_normal_size_t *retrieved_frame = get_data_from_buffer(&cb, i);
+
+        do {if ((((retrieved_frame)) != 
+
+       ((void *)0)
+
+       )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(204))));}} while(0);
+
+        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((1000 + i * 100)), (UNITY_INT)(UNITY_UINT32)((retrieved_frame->data[0])), (
+
+       ((void *)0)
+
+       ), (UNITY_UINT)(205), UNITY_DISPLAY_STYLE_UINT32);
+
+    }
+
+}
+
+
+
+
+
+
+
+void test_normal_data_circle_buffer_overflow(void) {
+
+    circular_buffer_t cb;
+
+    init_circular_buffer(&cb);
+
+
+
+    for(uint32_t i = 0; i < 100; i++) {
+
+        sensor_data_normal_size_t frame = create_data_frame(2000 + i * 100);
+
+        circular_buffer_err err = normal_data_circle_buffer(&cb, &frame);
+
+        UnityAssertEqualNumber((UNITY_INT)((CB_OK)), (UNITY_INT)((err)), (
+
+       ((void *)0)
+
+       ), (UNITY_UINT)(218), UNITY_DISPLAY_STYLE_INT);
+
+    }
+
+
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((cb.head)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(221), UNITY_DISPLAY_STYLE_UINT32);
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((0)), (UNITY_INT)(UNITY_UINT32)((cb.count)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(222), UNITY_DISPLAY_STYLE_UINT32);
+
+
+
+    for(uint32_t i = 0; i < 10; i++) {
+
+        sensor_data_normal_size_t frame = create_data_frame(3000 + (i * 100));
+
+        circular_buffer_err err = normal_data_circle_buffer(&cb, &frame);
+
+        UnityAssertEqualNumber((UNITY_INT)((CB_OK)), (UNITY_INT)((err)), (
+
+       ((void *)0)
+
+       ), (UNITY_UINT)(227), UNITY_DISPLAY_STYLE_INT);
+
+    }
+
+
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((10)), (UNITY_INT)(UNITY_UINT32)((cb.head)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(230), UNITY_DISPLAY_STYLE_UINT32);
+
+
+
+    UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((10)), (UNITY_INT)(UNITY_UINT32)((cb.count)), (
+
+   ((void *)0)
+
+   ), (UNITY_UINT)(232), UNITY_DISPLAY_STYLE_UINT32);
+
+
+
+    for(uint32_t i = 0; i < 10; i++) {
+
+        sensor_data_normal_size_t *retrieved_frame = get_data_from_buffer(&cb, i);
+
+        do {if ((((retrieved_frame)) != 
+
+       ((void *)0)
+
+       )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(236))));}} while(0);
+
+        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((3000 + i * 100)), (UNITY_INT)(UNITY_UINT32)((retrieved_frame->data[0])), (
+
+       ((void *)0)
+
+       ), (UNITY_UINT)(237), UNITY_DISPLAY_STYLE_UINT32);
+
+    }
+
+
+
+    for(uint32_t i = 90; i < 100; i++) {
+
+        sensor_data_normal_size_t *retrieved_frame = get_data_from_buffer(&cb, i);
+
+        do {if ((((retrieved_frame)) != 
+
+       ((void *)0)
+
+       )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(242))));}} while(0);
+
+        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((2000 + i * 100)), (UNITY_INT)(UNITY_UINT32)((retrieved_frame->data[0])), (
+
+       ((void *)0)
+
+       ), (UNITY_UINT)(243), UNITY_DISPLAY_STYLE_UINT32);
+
+    }
+
+}
+
+
+
+
+
+void test_get_data_from_buffer_valid_index(void) {
+
+    circular_buffer_t cb;
+
+    init_circular_buffer(&cb);
+
+
+
+    for(uint32_t i = 0; i < 10; i++) {
+
+        sensor_data_normal_size_t frame = create_data_frame(4000 + i * 100);
+
+        circular_buffer_err err = normal_data_circle_buffer(&cb, &frame);
+
+        UnityAssertEqualNumber((UNITY_INT)((CB_OK)), (UNITY_INT)((err)), (
+
+       ((void *)0)
+
+       ), (UNITY_UINT)(255), UNITY_DISPLAY_STYLE_INT);
+
+    }
+
+
+
+    for(uint32_t i = 0; i < 10; i++) {
+
+        sensor_data_normal_size_t *retrieved_frame = get_data_from_buffer(&cb, i);
+
+        do {if ((((retrieved_frame)) != 
+
+       ((void *)0)
+
+       )) {} else {UnityFail( (((" Expected Non-NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(260))));}} while(0);
+
+        UnityAssertEqualNumber((UNITY_INT)(UNITY_UINT32)((4000 + i * 100)), (UNITY_INT)(UNITY_UINT32)((retrieved_frame->data[0])), (
+
+       ((void *)0)
+
+       ), (UNITY_UINT)(261), UNITY_DISPLAY_STYLE_UINT32);
+
+    }
+
+}
+
+
+
+
+
+void test_get_data_from_buffer_invalid_index(void) {
+
+    circular_buffer_t cb;
+
+    init_circular_buffer(&cb);
+
+
+
+    for(uint32_t i = 0; i < 5; i++) {
+
+        sensor_data_normal_size_t frame = create_data_frame(5000 + i * 100);
+
+        circular_buffer_err err = normal_data_circle_buffer(&cb, &frame);
+
+        UnityAssertEqualNumber((UNITY_INT)((CB_OK)), (UNITY_INT)((err)), (
+
+       ((void *)0)
+
+       ), (UNITY_UINT)(273), UNITY_DISPLAY_STYLE_INT);
+
+    }
+
+
+
+    sensor_data_normal_size_t *retrieved_frame = get_data_from_buffer(&cb, 5);
+
+    do {if ((((retrieved_frame)) == 
+
+   ((void *)0)
+
+   )) {} else {UnityFail( (((" Expected NULL"))), (UNITY_UINT)((UNITY_UINT)((UNITY_UINT)(277))));}} while(0);
+
+}
