@@ -146,7 +146,7 @@ void test_init_circular_buffer(void) {
 sensor_data_normal_size_t create_data_frame(uint32_t base_value) {
     sensor_data_normal_size_t frame;
     frame.length = NORMAL_DATA_SIZE;
-    frame.data_status.is_data_present = 1;
+    frame.data_status.is_data_present = 0;
     frame.data_status.is_not_data_valid = 0;
     frame.data_status.is_not_length_valid = 0;
     frame.data_status.invalid_data_counter = 0;
@@ -201,8 +201,6 @@ void test_normal_data_circle_buffer_add_multiple_frames(void) {
 
     for(uint32_t i = 49; i != 0; i--) {
         sensor_data_normal_size_t *retrieved_frame = get_data_from_buffer(&cb, i);
-
-
 
         TEST_ASSERT_NOT_NULL(retrieved_frame);
         TEST_ASSERT_EQUAL_UINT32(5900 - i * 100, retrieved_frame->data[0]);
