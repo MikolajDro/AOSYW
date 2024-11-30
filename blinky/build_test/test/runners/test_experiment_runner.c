@@ -93,9 +93,9 @@ int main(void)
   run_test(test_init_circular_buffer, "test_init_circular_buffer", 124);
   run_test(test_normal_data_circle_buffer_add_single_frame, "test_normal_data_circle_buffer_add_single_frame", 162);
   run_test(test_normal_data_circle_buffer_add_multiple_frames, "test_normal_data_circle_buffer_add_multiple_frames", 189);
-  run_test(test_normal_data_circle_buffer_overflow, "test_normal_data_circle_buffer_overflow", 211);
-  run_test(test_get_data_from_buffer_valid_index, "test_get_data_from_buffer_valid_index", 248);
-  run_test(test_get_data_from_buffer_invalid_index, "test_get_data_from_buffer_invalid_index", 266);
+  run_test(test_normal_data_circle_buffer_overflow, "test_normal_data_circle_buffer_overflow", 213);
+  run_test(test_get_data_from_buffer_valid_index, "test_get_data_from_buffer_valid_index", 250);
+  run_test(test_get_data_from_buffer_invalid_index, "test_get_data_from_buffer_invalid_index", 268);
 
   return UnityEnd();
 }

@@ -62,11 +62,9 @@ circular_buffer_err normal_data_circle_buffer(circular_buffer_t *cb, sensor_data
     if (cb == NULL){
         return CIRCLE_BUFFER_NOT_INITIALIZE;
     }
-    if (new_data_frame == NULL)
-    {
+    if (new_data_frame == NULL) {
         return NO_NEW_DATA_FRAME;
     }
-    
 
     uint32_t index = cb->head % CIRCULAR_BUFFER_SIZE;
 
@@ -82,19 +80,19 @@ circular_buffer_err normal_data_circle_buffer(circular_buffer_t *cb, sensor_data
 
     cb->head = (cb->head + 1) % CIRCULAR_BUFFER_SIZE;
 
-    if (cb->count < CIRCULAR_BUFFER_SIZE) {
-        cb->count = (cb->count + 1) % CIRCULAR_BUFFER_SIZE;
+    if (cb->count < CIRCULAR_BUFFER_SIZE){
+        cb->count++;
     }
 
     return CB_OK;
 }
 
-sensor_data_normal_size_t* get_data_from_buffer(circular_buffer_t *cb, uint32_t index) {
-    if (cb == NULL || index < 0 || index >= cb->count){
+sensor_data_normal_size_t* get_data_from_buffer(circular_buffer_t *cb, uint32_t offset) {
+    if (cb == NULL || offset >= cb->count){
         return NULL;
     }
 
-    uint32_t actual_index = cb->head - cb->count + index;
+    uint32_t actual_index = (cb->head + CIRCULAR_BUFFER_SIZE - 1 - offset) % CIRCULAR_BUFFER_SIZE;
 
-    return (sensor_data_normal_size_t*)&cb->buffer[actual_index];
+    return &cb->buffer[actual_index];
 }

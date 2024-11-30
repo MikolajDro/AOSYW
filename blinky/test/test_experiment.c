@@ -199,15 +199,17 @@ void test_normal_data_circle_buffer_add_multiple_frames(void) {
     TEST_ASSERT_EQUAL_UINT32(50, cb.head);
     TEST_ASSERT_EQUAL_UINT32(50, cb.count);
 
-    for(uint32_t i = 0; i < 50; i++) {
+    for(uint32_t i = 49; i != 0; i--) {
         sensor_data_normal_size_t *retrieved_frame = get_data_from_buffer(&cb, i);
+
+
+
         TEST_ASSERT_NOT_NULL(retrieved_frame);
-        TEST_ASSERT_EQUAL_UINT32(1000 + i * 100, retrieved_frame->data[0]);
+        TEST_ASSERT_EQUAL_UINT32(5900 - i * 100, retrieved_frame->data[0]);
     }
 }
 
 // Test 9: Test if the function overflows the circular buffer
-//TODO: Fix this test
 void test_normal_data_circle_buffer_overflow(void) {
     circular_buffer_t cb;
     init_circular_buffer(&cb);
@@ -218,29 +220,29 @@ void test_normal_data_circle_buffer_overflow(void) {
         TEST_ASSERT_EQUAL_INT(CB_OK, err);
     }
 
-    TEST_ASSERT_EQUAL_UINT32(CIRCULAR_BUFFER_SIZE, cb.head);
+    TEST_ASSERT_EQUAL_UINT32(0, cb.head); // head = (100) % 100 = 0
     TEST_ASSERT_EQUAL_UINT32(CIRCULAR_BUFFER_SIZE, cb.count);
 
     for(uint32_t i = CIRCULAR_BUFFER_SIZE; i < CIRCULAR_BUFFER_SIZE + 10; i++) {
-        sensor_data_normal_size_t frame = create_data_frame(3000 + (i * 100));
+        sensor_data_normal_size_t frame = create_data_frame(3000 + i * 100);
         circular_buffer_err err = normal_data_circle_buffer(&cb, &frame);
         TEST_ASSERT_EQUAL_INT(CB_OK, err);
     }
 
-    TEST_ASSERT_EQUAL_UINT32(CIRCULAR_BUFFER_SIZE + 10, cb.head);
+    TEST_ASSERT_EQUAL_UINT32(10, cb.head); // head = (0 + 10) % 100 = 10
 
     TEST_ASSERT_EQUAL_UINT32(CIRCULAR_BUFFER_SIZE, cb.count);
 
     for(uint32_t i = 0; i < 10; i++) {
         sensor_data_normal_size_t *retrieved_frame = get_data_from_buffer(&cb, i);
         TEST_ASSERT_NOT_NULL(retrieved_frame);
-        TEST_ASSERT_EQUAL_UINT32(3000 + i * 100, retrieved_frame->data[0]);
+        TEST_ASSERT_EQUAL_UINT32(13900 - i * 100, retrieved_frame->data[0]);
     }
 
-    for(uint32_t i = 90; i < CIRCULAR_BUFFER_SIZE; i++) {
+    for(uint32_t i = 10; i < CIRCULAR_BUFFER_SIZE; i++) {
         sensor_data_normal_size_t *retrieved_frame = get_data_from_buffer(&cb, i);
         TEST_ASSERT_NOT_NULL(retrieved_frame);
-        TEST_ASSERT_EQUAL_UINT32(2000 + i * 100, retrieved_frame->data[0]);
+        TEST_ASSERT_EQUAL_UINT32(12900 - i * 100, retrieved_frame->data[0]);
     }
 }
 
@@ -258,7 +260,7 @@ void test_get_data_from_buffer_valid_index(void) {
     for(uint32_t i = 0; i < 10; i++) {
         sensor_data_normal_size_t *retrieved_frame = get_data_from_buffer(&cb, i);
         TEST_ASSERT_NOT_NULL(retrieved_frame);
-        TEST_ASSERT_EQUAL_UINT32(4000 + i * 100, retrieved_frame->data[0]);
+        TEST_ASSERT_EQUAL_UINT32(4000 + (9 - i) * 100, retrieved_frame->data[0]);
     }
 }
 
