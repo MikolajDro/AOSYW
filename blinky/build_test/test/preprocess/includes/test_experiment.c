@@ -1,3 +1,0 @@
----
-- "/home/megister/.rbenv/versions/3.0.7/lib/ruby/gems/3.0.0/gems/ceedling-0.31.1/vendor/unity/src/unity.h"
-- src/analyzer.h
