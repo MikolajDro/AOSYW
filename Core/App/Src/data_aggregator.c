@@ -16,11 +16,6 @@ static RANGING_SENSOR_Result_t reference_sample = {0};
 
 /* Functions */
 
-void Data_Agregator_Init()
-{
-	// TODO: create buffer here!
-}
-
 
 static int Data_Agregator_is_data_ok(RANGING_SENSOR_Result_t *data)
 {

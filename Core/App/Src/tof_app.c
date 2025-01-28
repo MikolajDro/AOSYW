@@ -49,10 +49,12 @@ static void clear_screen(void);
 static void handle_cmd(uint8_t cmd);
 static uint8_t get_key(void);
 static uint32_t com_has_data(void);
+static void display_commands_banner(void);
 #endif
 static void reset_device(void);
 static RANGING_SENSOR_Drv_t *CUSTOM_RANGING_Drv[RANGING_INSTANCES_NBR];
 static RANGING_SENSOR_Capabilities_t RANGING_SENSOR_Cap[RANGING_INSTANCES_NBR];
+
 
 
 #if (USE_CUSTOM_RANGING_VL53L5CX == 1U)
@@ -641,7 +643,9 @@ void print_result(RANGING_SENSOR_Result_t *Result)
   zones_per_line = ((Profile.RangingProfile == RS_PROFILE_8x8_AUTONOMOUS) ||
                     (Profile.RangingProfile == RS_PROFILE_8x8_CONTINUOUS)) ? 8 : 4;
 
+#if MY_DEBUG > 2
   display_commands_banner();
+#endif
 
   printf("Cell Format :\n\n");
   for (l = 0; l < RANGING_SENSOR_NB_TARGET_PER_ZONE; l++)
@@ -916,18 +920,6 @@ static int32_t convert_data_format(VL53L5CX_Object_t *pObj,
   }
 
   return ret;
-}
-static void display_commands_banner(void)
-{
-  /* clear screen */
-  printf("%c[2H", 27);
-  printf("----------------------------------------\n\n");
-  printf("VL53L5CX Simple Ranging\r\n");
-#ifdef USE_BARE_DRIVER
-  printf("Using direct calls to VL53L5CX bare driver API\n");
-#endif
-  printf("----------------------------------------\n\n");
-  printf("\n");
 }
 #endif
 
